@@ -1,39 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rock Paper Scissors Game</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h1>Rock Paper Scissors</h1>
-    <div class="choices">
-      <div class="choice" id="rock">
-        <img src="./images/rock.png" />
-      </div>
-      <div class="choice" id="paper">
-        <img src="./images/paper.png" />
-      </div>
-      <div class="choice" id="scissors">
-        <img src="./images/scissors.png" />
-      </div>
-    </div>
+<head>
+  <meta charset="UTF-8">
+  <title>Guess the Number</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f9;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    .app {
+      text-align: center;
+      background: #fff;
+      padding: 20px 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      width: 120px;
+      margin-right: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #0077ff;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #0055aa;
+    }
+    #msg {
+      margin-top: 20px;
+      font-size: 18px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <h1>🎯 Guess the Number</h1>
+    <p>I’m thinking of a number between 1 and 100</p>
+    
+    <input id="guessInput" type="number" min="1" max="100" placeholder="Enter guess">
+    <button id="guessBtn">Guess</button>
 
-    <div class="score-board">
-      <div class="score">
-        <p id="user-score">0</p>
-        <p>You</p>
-      </div>
-      <div class="score">
-        <p id="comp-score">0</p>
-        <p>Comp</p>
-      </div>
-    </div>
+    <p id="msg">Start guessing!</p>
+    <p>Attempts: <span id="attempts">0</span></p>
+  </div>
 
-    <div class="msg-container">
-      <p id="msg">Play your move</p>
-    </div>
-    <script src="app.js"></script>
-  </body>
+  <script>
+    const msg = document.getElementById("msg");
+    const attemptsEl = document.getElementById("attempts");
+    const guessInput = document.getElementById("guessInput");
+    const guessBtn = document.getElementById("guessBtn");
+
+    let secret = Math.floor(Math.random() * 100) + 1;
+    let attempts = 0;
+
+    function checkGuess(guess) {
+      attempts++;
+      if (guess < secret) {
+        msg.textContent = `Too low! Try a higher number.`;
+      } else if (guess > secret) {
+        msg.textContent = `Too high! Try a lower number.`;
+      } else {
+        msg.textContent = `🎉 Correct! The number was ${secret}. You won in ${attempts} attempts.`;
+        guessInput.disabled = true;
+        guessBtn.disabled = true;
+      }
+      attemptsEl.textContent = attempts;
+    }
+
+    guessBtn.addEventListener("click", () => {
+      const guess = Number(guessInput.value);
+      if (!guess || guess < 1 || guess > 100) {
+        msg.textContent = "⚠️ Please enter a number between 1 and 100.";
+        return;
+      }
+      checkGuess(guess);
+      guessInput.value = ""; // clear input
+    });
+  </script>
+</body>
 </html>
