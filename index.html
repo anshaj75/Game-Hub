@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mini Games Hub</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    h1 {
+      margin: 20px 0;
+      color: #fff;
+      font-size: 42px;
+      text-shadow: 0 0 10px #00f0ff, 0 0 20px #00f0ff;
+    }
+    .marquee {
+      background: #ff0000;
+      color: white;
+      font-size: 18px;
+      padding: 10px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .games {
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .games a {
+      display: inline-block;
+      width: 220px;
+      padding: 20px 25px;
+      font-size: 20px;
+      text-decoration: none;
+      background: #111;
+      color: #fff;
+      border-radius: 18px;
+      transition: 0.3s;
+      text-align: center;
+      box-shadow: 0 0 15px #00f0ff, inset 0 0 8px #00f0ff;
+    }
+    .games a:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 25px #ff00ff, inset 0 0 12px #ff00ff;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎮 Mini Games Hub 🎮</h1>
+
+  <!-- Scrolling welcome message -->
+  <marquee class="marquee" behavior="scroll" direction="left">
+    🎉 Welcome to Mini Games Hub! Play Tic Tac Toe, Rock Paper Scissors, and Guess the Number – all in one place! 🎮
+  </marquee>
+
+  <div class="games">
+    <a href="tic-tac-toe/index.html">❌⭕ Tic Tac Toe</a>
+    <a href="rock-paper-scissor/index.html">✊✋✌️ Rock Paper Scissors</a>
+    <a href="guess-number/index.html">🔢 Guess the Number</a>
+  </div>
+</body>
+</html>
